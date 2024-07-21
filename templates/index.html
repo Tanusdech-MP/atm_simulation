@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Simulation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f3f6f9;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .list-group-item {
+            font-size: 1.2em;
+        }
+        .list-group-item:hover {
+            background-color: #e9ecef;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .alert {
+            transition: opacity 1s ease-out;
+        }
+        .alert.hide {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">ATM Simulation</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/create_account">Create Account</a></li>
+                <li><a href="/view_balance">View Balance</a></li>
+                <li><a href="/deposit">Deposit</a></li>
+                <li><a href="/withdraw">Withdraw</a></li>
+                <li><a href="/delete_account">Delete Account</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center bg-primary">
+        <h1>ATM Simulation</h1>
+        <p>Welcome to ATM Simulation</p>
+    </div>
+
+    {% if session['alert_status'] %}
+    <div class="alert alert-{{ session['alert_status'] }} text-center" style="font-size: 2em; padding: 1em; border-radius: 0.5em; margin: 1em 0;" id="alert-message">
+        {{ session['alert_message'] }}
+    </div>
+    {% endif %}
+
+    <!-- Columns Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text"><img src="https://img.icons8.com/?size=100&id=1078&format=png&color=000000" height="100"></p>
+                        <p><a href="/create_account" class="btn btn-info" style="padding: 10px 30px;">Create Account</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text"><img src="https://img.icons8.com/?size=100&id=209&format=png&color=000000" height="100"></p>
+                        <p><a href="/view_balance" class="btn btn-primary" style="padding: 10px 30px;">View Balance</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text"><img src="https://img.icons8.com/?size=100&id=35073&format=png&color=000000" height="100"></p>
+                        <p><a href="/deposit" class="btn btn-success" style="padding: 10px 30px;"> Deposit Money</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text"><img src="https://img.icons8.com/?size=100&id=CVFWWA0q6VxW&format=png&color=000000" height="100"></p>
+                        <p><a href="/withdraw" class="btn btn-warning" style="padding: 10px 30px;">Withdraw Money</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        <p class="card-text"><img src="https://img.icons8.com/?size=100&id=102315&format=png&color=000000" height="100"></p>
+                        <p><a href="/delete_account" class="btn btn-danger" style="padding: 10px 30px;">Delete Account</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to hide alert after 4 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            var alertElement = document.getElementById('alert-message');
+            if (alertElement) {
+                setTimeout(function() {
+                    alertElement.classList.add('hide');
+                }, 4000); // 4 seconds
+            }
+        });
+    </script>
+</body>
+</html>
